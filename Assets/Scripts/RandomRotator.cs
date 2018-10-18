@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mover : MonoBehaviour {
+public class RandomRotator : MonoBehaviour {
 
-    // Variable Declarations
-    public float speed;
+    public float tumble;
 
     private Rigidbody2D rBody;
 
 	// Use this for initialization
 	void Start () {
         rBody = GetComponent<Rigidbody2D>();
-        rBody.velocity = transform.right * speed;
+        rBody.angularVelocity = Random.value * tumble;
 	}
 }
