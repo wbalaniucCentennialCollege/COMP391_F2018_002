@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Mover.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\RandomRotator.cs" />
+     <None Include="Assets\Fonts\Righteous\OFL.txt" />
      <None Include="Assets\Sprites\new-explosionb (1)\new-explosionb\explosion.txt" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Wallace/Documents/GitHub/COMP391_F2018_002/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

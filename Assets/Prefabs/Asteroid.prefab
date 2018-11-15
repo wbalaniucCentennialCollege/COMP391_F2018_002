@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574b3234d3fa1ef44af60daa05359ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -5
+  speed: -10
 --- !u!114 &114186305410865540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,6 +107,7 @@ MonoBehaviour:
     type: 2}
   explosionPlayer: {fileID: 1546148998853910, guid: 44e483d6151965c42a8cad3c2d61a60f,
     type: 2}
+  scoreValue: 10
 --- !u!114 &114837061005377636
 MonoBehaviour:
   m_ObjectHideFlags: 1

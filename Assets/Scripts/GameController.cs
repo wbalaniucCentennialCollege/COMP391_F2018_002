@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// NEW USING STATEMENTS
+using UnityEngine.UI;
 
 // This is where our game logic will be run
 public class GameController : MonoBehaviour {
@@ -13,6 +15,9 @@ public class GameController : MonoBehaviour {
     public float spawnWait;     // How long betwen each hazard in each wave?
     public float waveWait;      // How long between each waves?
 
+    [Header("UI Settings")]
+    public Text scoreText;
+
     private int score;
     private bool gameOver;
     private bool restart;
@@ -23,6 +28,7 @@ public class GameController : MonoBehaviour {
         StartCoroutine(SpawnWaves());
         gameOver = false;
         restart = false;
+        UpdateScore();
 	}
 	
     // Function dedicated to spawning waves of hazards
@@ -42,5 +48,17 @@ public class GameController : MonoBehaviour {
             }
             yield return new WaitForSeconds(waveWait);
         }
+    }
+
+    public void AddScore(int newScoreValue)
+    {
+        score += newScoreValue; // score = score + newScoreValue
+        // Debug.Log("Score: " + score);
+        UpdateScore();
+    }
+
+    void UpdateScore()
+    {
+        scoreText.text = "Score: " + score;
     }
 }
