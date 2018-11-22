@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 // NEW USING STATEMENTS
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 // This is where our game logic will be run
 public class GameController : MonoBehaviour {
@@ -17,6 +18,8 @@ public class GameController : MonoBehaviour {
 
     [Header("UI Settings")]
     public Text scoreText;
+    public Text gameOverText;
+    public Text restartText;
 
     private int score;
     private bool gameOver;
@@ -31,6 +34,23 @@ public class GameController : MonoBehaviour {
         UpdateScore();
 	}
 	
+    void Update()
+    {
+        // Check whether you are restarting
+        if(restart)
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                // Restart our game
+                // THE OLD WAY. DON'T USE THIS.
+                // Application.LoadLevel("Level1");
+                // THE NEW WAY. USE THIS!
+                // SceneManager.LoadScene("Level1");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
+    }
+
     // Function dedicated to spawning waves of hazards
     // Coroutine
     IEnumerator SpawnWaves()
@@ -47,6 +67,19 @@ public class GameController : MonoBehaviour {
                 yield return new WaitForSeconds(spawnWait);
             }
             yield return new WaitForSeconds(waveWait);
+
+            // Restart logic here
+            if(gameOver)
+            {
+                // Active the Restart UI text
+                restartText.enabled = true;
+                // (Optional) Set Restart UI text
+                // restartText.text = "YOUR SUPER SECRET CUSTOM MESSAGE HERE";
+                // Set restart boolean value to true
+                restart = true;
+
+                break;
+            }
         }
     }
 
@@ -60,5 +93,13 @@ public class GameController : MonoBehaviour {
     void UpdateScore()
     {
         scoreText.text = "Score: " + score;
+    }
+
+    public void GameOver()
+    {
+        // What happens when my game is over?
+        gameOver = true;
+
+        gameOverText.enabled = true;
     }
 }

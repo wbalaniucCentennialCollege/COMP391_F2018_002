@@ -38,6 +38,7 @@ public class DestroyByContact : MonoBehaviour {
         {
             Instantiate(explosionPlayer, other.transform.position, other.transform.rotation);
             // Trigger Game Over logic
+            gameControllerScript.GameOver();
         }
         
         Instantiate(explosionAsteroid, this.transform.position, this.transform.rotation);
